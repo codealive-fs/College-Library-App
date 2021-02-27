@@ -28,6 +28,7 @@ Display.prototype.clear = function() {
     let libraryForm = document.getElementById('libraryForm'); 
     libraryForm.reset();
 }
+
 // Implement the vaidate function
 Display.prototype.validate = function(book) {
     if (book.name.length < 2 || book.author.length < 2)
@@ -38,6 +39,15 @@ Display.prototype.validate = function(book) {
         return true
     }
 }
+
+Display.prototype.show = function(type) {
+    let messege = document.getElementById('messege');
+    messege.innerHTML = `<!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div> -->`
+}
+
 
 // Add submit event listener to library form
 let libraryForm = document.getElementById('libraryForm');
@@ -78,3 +88,4 @@ function libraryFormSubmit(e) {
     e.preventDefault();
 }
 
+ 
