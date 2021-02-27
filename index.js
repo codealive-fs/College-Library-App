@@ -87,5 +87,3 @@ function libraryFormSubmit(e) {
 
     e.preventDefault();
 }
-
- 
