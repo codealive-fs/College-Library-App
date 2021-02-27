@@ -20,19 +20,24 @@ Display.prototype.add = function(book) {
             <td>${book.author}</td>
             <td>${book.type}</td>
         </tr>`;
-    tableBody.innerHTML += uiString;
+    tableBody.innerHTML += uiString; 
 }
 
+// Implement the clear function
 Display.prototype.clear = function() {
     let libraryForm = document.getElementById('libraryForm'); 
     libraryForm.reset();
 }
-
-Display.prototype.clear = function() {
-    let libraryForm = document.getElementById('libraryForm'); 
-    libraryForm.reset();
+// Implement the vaidate function
+Display.prototype.validate = function(book) {
+    if (book.name.length < 2 || book.author.length < 2)
+    {
+        return false
+    }
+    else {
+        return true
+    }
 }
-
 
 // Add submit event listener to library form
 let libraryForm = document.getElementById('libraryForm');
@@ -58,7 +63,7 @@ function libraryFormSubmit(e) {
     }
 
     let book = new Book(name, author, type);
-
+    console.log(book);
 
     let display = new Display();    
     if (display.validate(book)) {
