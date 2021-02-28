@@ -40,12 +40,12 @@ Display.prototype.validate = function(book) {
     }
 }
 
-Display.prototype.show = function(type) {
+Display.prototype.show = function(type, messege) {
     let messege = document.getElementById('messege');
-    messege.innerHTML = `<!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div> -->`
+    messege.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                            <strong>Messege:</strong>${messege}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         </div>`
 }
 
 
@@ -79,10 +79,10 @@ function libraryFormSubmit(e) {
     if (display.validate(book)) {
             display.add(book);
             display.clear();
-            display.show('success')
+            display.show('success', 'Your book has been successfully added.')
     }
     else {
-        display.show('error')
+        display.show('danger', 'Sorry, You cannot add this book. ')
     }
 
     e.preventDefault();
