@@ -36,16 +36,18 @@ Display.prototype.validate = function(book) {
         return false
     }
     else {
-        return true
+        return true;
     }
 }
 
-Display.prototype.show = function(type, messege) {
-    let messege = document.getElementById('messege');
-    messege.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
-                            <strong>Messege:</strong>${messege}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                         </div>`
+Display.prototype.show = function(type, displayMessage) {
+    let message = document.getElementById('message');
+    message.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                            <strong>Messege:</strong>${displayMessage}
+                         </div>`;
+    setTimeout(function () {
+         message.innerHTML = ''
+    }, 2000);
 }
 
 
@@ -82,7 +84,7 @@ function libraryFormSubmit(e) {
             display.show('success', 'Your book has been successfully added.')
     }
     else {
-        display.show('danger', 'Sorry, You cannot add this book. ')
+        display.show('danger', ' Sorry, You cannot add this book. ')
     }
 
     e.preventDefault();
